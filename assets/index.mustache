@@ -1,0 +1,283 @@
+<!-- NAVIGATION ROW -->
+<div class="row">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#balihoo-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand ga-logo" href="{{logoURL}}" target="_blank">
+            <img src="{{{brandLogoSRC}}}" class="img-responsive brand-logo">
+            <p class="sr-only">{{logoAlt}}</p>
+          </a>
+
+          {{#cobrandLogo}}
+          <a class="navbar-brand hidden-xs ga-website" href="{{website}}" target="_blank">
+            <img src="{{.}}" class="img-responsive brand-logo" alt="{{cobrandLogoAlt}}" title="{{locationName}}">
+            <p class="sr-only">{{locationName}}</p>
+          </a>
+          {{/cobrandLogo}}
+
+        </div>
+
+        <!-- Nav Toggle -->
+        <div class="collapse navbar-collapse" id="balihoo-navbar">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="ga-website" href="{{website}}" target="_blank">{{locationName}}</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{contactUs}} <b class="caret"></b></a>
+
+              <ul class="dropdown-menu">
+                <li><a href="tel:+1-{{phone}}"><span class="tel">{{phone}}</span></a></li>
+            <li><a class="ga-email" href="#" data-toggle="modal" data-target="#formModal">{{emailVanity}}</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+
+      </div><!-- /.container -->
+
+    </nav>
+
+</div><!-- /.row -->
+
+<div class="jumbotron">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>{{primaryHeadline}}</h1>
+        <p class="lead">{{{primaryCopy}}}</p>
+        {{#primaryButton}}
+        <p><a class="btn btn-lg btn-primary ga-website" href="{{website}}" target="_blank">{{.}}</a></p>
+        {{/primaryButton}}
+      </div>
+
+      {{#hero}}
+      <div class="col-xs-12">
+        <a class="ga-website" href="{{website}}" target="_blank">
+          <img src="{{hero}}" class="img-responsive" alt="{{heroAlt}}" title="{{locationName}}">
+        </a>
+      </div>
+      {{/hero}}
+
+    </div>
+
+  </div><!-- ./container -->
+</div><!-- ./jumbo -->
+
+
+<div class="container">
+
+<!-- NAP + MAP ROW -->
+<div class="row" itemscope itemtype="http://schema.org/LocalBusiness">
+
+  <div class="col-sm-12 col-md-3">
+
+      <div class="row">
+
+        {{#locationLogo}}
+        <div class="hidden-xs col-xs-12 col-sm-4 col-md-12">
+          <img itemprop="logo" src="{{.}}" class="img-responsive" alt="{{locationoAlt}}" title="{{locationName}}">
+        </div>
+
+        <div class="hidden-sm hidden-md hidden-lg col-xs-12">
+          <img itemprop="logo" src="{{.}}" class="img-responsive center-block" alt="{{locationLogoAlt}}" title="{{locationName}}">
+        </div>
+        {{/locationLogo}}
+
+        <div class="col-xs-12 col-sm-4 col-md-12 xs-center">
+          <h4 itemprop="legalName">{{locationName}}</h4>
+          <p class="lead hidden-xs hidden-sm"><strong>{{phoneLabel}}</strong> <span itemprop="telephone"><span class="tel">{{phone}}</span></span></p>
+
+          <p><button class="btn btn-lg btn-primary hidden-xs hidden-sm ga-email" href="#" data-toggle="modal" data-target="#formModal">{{contactUs}}</button></p>
+
+          {{#cell}}
+          <p class="hidden-xs hidden-sm"><strong>{{cellLabel}}</strong> <span itemprop="telephone">{{cell}}</span>{{^fax}}</p>{{/fax}}
+          {{/cell}}
+          {{#fax}}
+          {{^cell}}<p class="hidden-xs hidden-sm">{{/cell}}{{#cell}}<br>{{/cell}}<strong>{{faxLabel}}</strong> <span itemprop="faxNumber">{{fax}}</span></p>
+          {{/fax}}
+
+          {{#displayEmail}}<p><a itemprop="email" class="ga-email" href="mailto:{{.}}">{{.}}</a></p>{{/displayEmail}}
+
+          <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">{{address1}}<br/>
+          {{#address2}}{{.}}<br/>{{/address2}}</span>
+          <span itemprop="addressLocality">{{city}}</span>, <span itemprop="addressRegion">{{state}}</span> <span itemprop="postalCode">{{zip}}</span></p>
+          <a class="hidden-xs hidden-sm ga-map" itemprop="url" href="https://www.google.com/maps/place/{{address1}}{{#address2}}, {{.}}{{/address2}}, {{city}}, {{state}}, {{zip}}" target="_blank"><small>{{directions}}</small></a>
+          {{#social}}
+          <div class="social">
+             {{>partials/social}}
+          </div>
+          {{/social}}
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-12 xs-center hidden-md hidden-lg">
+          {{#contactUs}}<p><button class="btn btn-lg btn-primary ga-email" href="#" data-toggle="modal" data-target="#formModal">{{.}}</button></p>{{/contactUs}}
+          {{#phone}}<p itemprop="telephone" class="lead"><span class="tel">{{.}}</span></p>{{/phone}}
+          <div itemscope itemprop="hasMap" itemtype="http://schema.org/Map">
+            {{#map}}<a class="ga-map" itemprop="url" href="https://www.google.com/maps/place/{{>partials/address}}" target="_blank"><small>{{directions}}</small></a>{{/map}}
+          </div>
+        </div>
+
+      </div><!-- ./row -->
+  </div><!-- /.col -->
+
+  <div class="col-sm-12 col-md-9">
+    {{#map}}
+    <div itemscope itemprop="hasMap" itemtype="http://schema.org/Map">
+      <link itemprop="mapType" href="http://schema.org/TransitMap" />
+      <a itemprop="url" class="ga-map" href="{{googleMapLink}}" target="_blank">
+        <img src="{{googleMap}}" alt="Map of address" title="Google Map" class="img-responsive">
+      </a>
+    </div> <!-- ./schema map -->
+    {{/map}}
+  </div>
+</div> <!-- /.row -->
+
+{{#hours}}
+<div class="row">
+  <div class="panel panel-default top-buffer">
+
+    <div class="panel-heading">
+      <h4>{{hoursLabel}}</h4>
+    </div>
+
+    <div class="panel-body">
+      {{#hrsMonOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{monLabel}}: {{hrsMonOpen}}{{#hrsMonClose}} - {{.}}{{/hrsMonClose}}">
+        <h5>{{monLabel}}</h5>
+        <p>{{.}}{{#hrsMonClose}} - {{.}}{{/hrsMonClose}}</p>
+      </div>
+      {{/hrsMonOpen}}
+      {{#hrsTueOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{tueLabel}}: {{hrsTueOpen}}{{#hrsTueClose}} - {{.}}{{/hrsTueClose}}">
+        <h5>{{tueLabel}}:</h5
+        <p>{{.}}{{#hrsTueClose}} - {{.}}{{/hrsTueClose}}</p>
+      </div>
+      {{/hrsTueOpen}}
+      {{#hrsWedOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{wedLabel}}: {{hrsWedOpen}}{{#hrsWedClose}} - {{.}}{{/hrsWedClose}}">
+        <h5>{{wedLabel}}:</h5
+        <p>{{.}}{{#hrsWedClose}} - {{.}}{{/hrsWedClose}}</p>
+      </div>
+      {{/hrsWedOpen}}
+      {{#hrsThuOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{thuLabel}}: {{hrsThuOpen}}{{#hrsThuClose}} - {{.}}{{/hrsThuClose}}">
+        <h5>{{thuLabel}}:</h5
+        <p>{{.}}{{#hrsThuClose}} - {{.}}{{/hrsThuClose}}</p>
+      </div>
+      {{/hrsThuOpen}}
+      {{#hrsFriOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{friLabel}}: {{hrsFriOpen}}{{#hrsFriClose}} - {{.}}{{/hrsFriClose}}">
+        <h5>{{friLabel}}:</h5
+        <p>{{.}}{{#hrsFriClose}} - {{.}}{{/hrsFriClose}}</p>
+      </div>
+      {{/hrsFriOpen}}
+      {{#hrsSatOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{satLabel}}: {{hrsSatOpen}}{{#hrsSatClose}} - {{.}}{{/hrsSatClose}}">
+        <h5>{{satLabel}}:</h5
+        <p>{{.}}{{#hrsSatClose}} - {{.}}{{/hrsSatClose}}</p>
+      </div>
+      {{/hrsSatOpen}}
+      {{#hrsSunOpen}}
+      <div class="col-xs-6 col-sm-3">
+        <meta itemprop="openingHours" content="{{sunLabel}}: {{hrsSunOpen}}{{#hrsSunClose}} - {{.}}{{/hrsSunClose}}">
+        <h5>{{sunLabel}}:</h5
+        <p>{{.}}{{#hrsSunClose}} - {{.}}{{/hrsSunClose}}</p>
+      </div>
+      {{/hrsSunOpen}}
+    </div><!-- /.panel-body -->
+  </div><!-- /.panel -->
+</div><!-- /.row -->
+{{/hours}}
+
+</div> <!-- /.container -->
+
+
+<!-- FOOTER -->
+<div class="footer">
+<div class="container">
+  <small>{{{legalCopy}}}</small>
+</div>
+</div><!-- /.footer -->
+
+<!-- FORM MODAL -->
+<div class="modal fade" id="formModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">{{locationName}}</h4>
+      </div>
+      <form class="form-js" role="form" data-toggle="validator">
+        <div class="modal-body">
+          <p class="lead hidden thanks">{{thankyouLine1}}</p>
+          <p class="lead hidden thanks">{{thankyouLine2}}</p>
+          
+          <div class="hide-me">
+            <input type="hidden" name="listname" value="Landing Page Form Leads">
+            <input type="hidden" name="leademail" value="{{email}}">
+            <input type="hidden" name="affiliatecompanyid" value="{{AffiliateCompanyID}}">
+            <input type="hidden" name="processURL" value="{{leadcaptureurl}}">
+
+            <div class="form-group">
+              {{#leadFormLine1}}
+              <p class="lead">{{.}}</p>
+              {{/leadFormLine1}}
+              {{#leadFormLine2}}
+              <p class="lead">{{.}}</p>
+              {{/leadFormLine2}}
+              {{#leadFormLine3}}
+              <p class="lead">{{.}}</p>
+              {{/leadFormLine3}}
+            </div>
+
+            <div class="form-group">
+              <label for="inputFirstName" class="control-label">{{placeholderLine1}}</label>
+              <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="{{placeholderLine1}}" data-error="First Name is required" required>
+              <div class="help-block with-errors"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputLastName" class="control-label">{{placeholderLine2}}</label>
+              <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="{{placeholderLine2}}" data-error="Last Name is required" required>
+              <div class="help-block with-errors"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail" class="control-label">{{placeholderLine3}}</label>
+              <input type="email" name="email" class="form-control" id="inputEmail" placeholder="{{placeholderLine3}}" data-error="Email is required" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+              <label for="inputTel" class="control-label">{{placeholderLine4}}</label>
+              <input type="tel" name="tel" class="form-control" id="inputTel" placeholder="{{placeholderLine4}}" data-error="Phone Number is required" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div><!-- /.hide-me -->
+        </div><!-- /.modal-body -->
+        <div class="modal-footer hide-me">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{close}}</button>
+          <button type="submit" class="btn btn-success">{{submit}}</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

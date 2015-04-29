@@ -1,0 +1,98 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{titleTag}}</title>
+    <meta name="description" content="{{metaDescription}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{#canonical}}<link rel="canonical" href="{{{.}}}" />{{/canonical}}
+
+    <link rel="shortcut icon" href="{{{assets.img.favicon}}}" type="image/x-icon">
+
+    <link href="{{{assets.css.bootstrap-min}}}" rel="stylesheet">
+    <link href="{{{assets.css.jumbotron-narrow}}}" rel="stylesheet">
+    <link href="{{{assets.css.template}}}" rel="stylesheet">
+
+    <script src="{{{assets.js.modernizr-custom-38809}}}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+        var sourceAffiliateNumber = "{{#location}}{{SourceAffiliateNumber}}{{/location}}";
+        var placeholderLine1 = "{{placeholderLine1}}".replace('*', '');
+        var placeholderLine2 = "{{placeholderLine2}}".replace('*', '');
+        var placeholderLine3 = "{{placeholderLine3}}".replace('*', '');
+        var placeholderLine4 = "{{placeholderLine4}}".replace('*', '');
+        var validationLine1 = "{{validationLine1}}";
+        var validationLine2 = "{{validationLine2}}";
+        var validationLine3 = "{{validationLine3}}";
+        var validationLine4 = "{{validationLine4}}";
+        var formErrorMessage = "{{formErrorMessage}}";
+    </script>
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+    <div class="whatbrowser">
+      <p>You are using an outdated browser.<br><a href="//whatbrowser.org">Please upgrade</a>* to improve your experience and security.</p>
+      <small>* <a href="whatbrowser.org">//whatbrowser.org</a> is maintaned by Google and is not associated in any way with the owner of this site.</small>
+    </div>
+    <![endif]-->
+
+    {{!Page layout}}
+    {{#request}}
+      {{#ifpage.index}}      {{> index}}      {{/ifpage.index}}
+      {{#ifpage.notfound}}   {{> notfound}}   {{/ifpage.notfound}}
+    {{/request}}
+
+    {{!jQuery - Google CDN}}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+    </script>
+    {{!jQuery - Fallback}}
+    <script>
+      window.jQuery || document.write('<script src="{{{assets.js.jquery-1-11-0-min}}}"><\/script>')
+    </script>
+    
+    {{! Google Analytics - this needs to be run after jQuery}}
+    {{#googleAnalytics}}
+    <script>
+        {{{.}}}
+    </script>
+    {{/googleAnalytics}}
+    {{^googleAnalytics}}
+        <!-- This page is not being tracked by Google Analytics -->
+    {{/googleAnalytics}}
+    
+    {{!Bootstrap}}
+    <script src="{{{assets.js.bootstrap-min}}}"></script>
+
+    {{!jQuery - Validator}}
+    <script src="{{{assets.js.validator}}}"></script>
+    
+    {{!Balihoo JS}}
+    <script src="{{{assets.js.scripts}}}"></script>
+
+    {{!Phone Swap}}
+    {{#phoneSwap}}
+    <script>
+        {{{.}}}
+    </script>
+    {{/phoneSwap}}
+    {{^phoneSwap}}
+        <!-- This page is not swapping phone numbers -->
+    {{/phoneSwap}}
+
+  </body>
+</html>
+

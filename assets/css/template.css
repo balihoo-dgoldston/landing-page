@@ -1,0 +1,112 @@
+body {
+  /*margin-top: -21px;*/
+}
+
+.jumbotron {
+  /*text-align: left;*/
+}
+
+.btn {
+	white-space: normal;
+}
+
+.brand-logo {
+	height: 36px;
+}
+
+.top-buffer {
+	margin-top:30px;
+}
+
+.navbar {
+	min-height: 68px;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .navbar .container {
+     max-width: inherit; 
+  }
+  .container {
+     max-width: inherit; 
+  }
+}
+
+@media (max-width: 768px) {
+  .xs-center {
+     text-align: center; 
+  }
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	margin-top: 0.5em;
+}
+
+.navbar-toggle {
+	margin-top: 1.3em;
+}
+
+.navbar-brand {
+	margin-right: 3em;
+	padding: 16px;
+}
+
+.small-padding {
+	padding-bottom: 2em;
+}
+
+.social ul {
+  padding: 0;
+}
+.social li {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+  .social li.facebook a {
+    background-position: 0 0;
+  }
+  .social li.twitter a {
+    background-position: -25px 0;
+  }
+  .social li.youtube a {
+    background-position: -50px 0;
+  }
+  .social li.pinterest a {
+    background-position: -75px 0;
+  }
+  .social li.googleplus a {
+    background-position: -100px 0;
+  }
+  .social li.instagram a {
+    background-position: -125px 0;
+  }
+  .social li.linkedin a {
+    background-position: -150px 0;
+  }
+  .social li a {
+    display: inline-block;
+    font: 0/0 a;
+    width: 23px;
+    height: 23px;
+    background-image: url(../img/icons.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+  }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .social li a {
+        background-size: 175px 50px;
+        background-image: url(../img/icons@2x.png);
+      }
+    }
+    @media only screen and (max-width: 768px) {
+      .social li {
+        margin: 0 0 0 9px;
+      }
+        .social li:first-of-type {
+          margin: 0 0 0 0;
+        }
+    }
+
+.servicefix {
+  margin-bottom: 1em;
+}
