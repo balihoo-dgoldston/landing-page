@@ -7,12 +7,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{titleTag}}</title>
-    <meta name="description" content="{{metaDescription}}">
+    {{#titleTag}}<title>{{.}}</title>{{/titleTag}}
+    {{#metaDescription}}<meta name="description" content="{{.}}" id="b-description">{{/metaDescription}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{#canonical}}<link rel="canonical" href="{{{.}}}" />{{/canonical}}
+    {{#canonical}}<link rel="canonical" href="{{{.}}}" id="b-canonical" />{{/canonical}}
 
-    <link rel="shortcut icon" href="{{{assets.img.favicon}}}" type="image/x-icon">
+    {{#assets.img.favicon}}<link rel="shortcut icon" href="{{{.}}}" type="image/x-icon" id="b-favicon">{{/assets.img.favicon}}
 
     <link href="{{{assets.css.bootstrap-min}}}" rel="stylesheet">
     <link href="{{{assets.css.jumbotron-narrow}}}" rel="stylesheet">
@@ -93,6 +93,7 @@
         <!-- This page is not swapping phone numbers -->
     {{/phoneSwap}}
 
+    {{{$tests}}}
   </body>
 </html>
 
