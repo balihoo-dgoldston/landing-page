@@ -18,3 +18,4 @@ QUnit.test "Required page elements", (assert) ->
   # Check for a favicon icon
   favicon = $('#b-favicon').attr('href')
   assert.ok favicon, 'There is a favicon in the assets/img folder'
+  
